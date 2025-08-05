@@ -1,0 +1,26 @@
+ops=(['+','-','*','/','(',')','^'])
+pr={'+':1,'-':1,'*':2,'/':2,'^':3}
+def inp(exp):
+    s=[]
+    op=''
+    for ch in exp:
+        if ch not in ops:
+            op+=ch
+        elif ch=='(':
+            s.append('(')
+        elif ch==')':
+            while s and s[-1]!='(':
+                op+=s.pop()
+            s.pop()
+        else:
+            while s and s[-1]!='(' and pr[ch]<=pr[s[-1]]:
+                op+=s.pop()
+            s.append(ch)
+    while s:
+        op+=s.pop()
+    return op
+ex=input("enter infix")
+print('infix expression:',ex)
+print('postfix expression:',inp(ex))
+
+
