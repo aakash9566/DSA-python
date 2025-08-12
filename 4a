@@ -1,0 +1,26 @@
+class Queue:
+    def __init__(self):
+        self.queue=[]
+    def is_empty(self):
+        return len(self.queue)==0
+    def en(self,item):
+        self.queue.append(item)
+    def de(self):
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.queue.pop(0)
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("queue is empty")
+        return self.queue[0]
+    def size(self):
+        return len(self.queue)
+q=Queue()
+q.en(10)
+q.en(20)
+q.en(30)
+print("queue after enqueue elements:",q.queue)
+print("dequeue elements:",q.de())
+print("queue after dequeuing elements:",q.queue)
+print("front elements:",q.peek())
+print("queue size:",q.size())
